@@ -2,16 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 
-import { getContacts } from 'redux/selectors';
-import { addContactThunk } from 'redux/operations';
-// import { addContact } from 'redux/phonebookSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 const ContactForm = () => {
   const nameInputId = nanoid(5);
   const phoneInputId = nanoid(5);
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormSubmit = event => {
@@ -31,7 +30,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContactThunk(contact));
+    dispatch(addContact(contact));
     event.currentTarget.reset();
   };
 
@@ -70,7 +69,6 @@ const ContactForm = () => {
       </Button>
     </Form>
   );
-  // }
 };
 
 export default ContactForm;

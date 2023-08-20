@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteContactThunk } from 'redux/operations';
-// import { deleteContact } from 'redux/phonebookSlice';
+
+import { deleteContact } from 'redux/operations';
 import { ContactItem, Name, Number, Button } from './ContactListItem.styled';
 
 const ContactListItem = ({ id, name, phone }) => {
@@ -16,7 +16,7 @@ const ContactListItem = ({ id, name, phone }) => {
       <Button
         type="button"
         aria-label="Delete"
-        onClick={() => dispatch(deleteContactThunk(id))}
+        onClick={() => dispatch(deleteContact(id))}
       >
         Delete
       </Button>
